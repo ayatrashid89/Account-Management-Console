@@ -1,26 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
+import React,{Component} from 'react';
+import User from './Component/user';
+import {Users} from './users/userArray';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
-function App() {
+class  App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+        Users: Users,
+        update: null
+    };
+    console.log(this.state)
+
+}
+
+   
+  modifyState(id) {
+    const update = this.state.Users.filter(user => id !== user.id)
+     this.setState({
+      Users: update
+
+    })
+    }
+
+render(){
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+       <User users={this.state.Users} modify= {this.modifyState.bind(this)}/>
+     
     </div>
   );
+}
 }
 
 export default App;
