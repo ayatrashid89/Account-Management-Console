@@ -20,9 +20,7 @@ class user extends Component {
                                 <Button variant="primary" onClick={() => this.props.modify(user.id)}>Delete</Button>
                             </Col>
                     </span>
-                                
-                        
-            
+             
             );
         });
 
@@ -30,17 +28,15 @@ class user extends Component {
 
             <div>
                 <Jumbotron fluid>
+                     <h1>Hello Users</h1>
+                </Jumbotron>
+                <div className="container">
                     <Container>
-                        <h1>Hello Users</h1>
+                        <Row>
+                        {userArr}
+                        </Row> 
                     </Container>
-               </Jumbotron>
-                   <div className="container">
-                      <Container>
-                          <Row>
-                          {userArr}
-                          </Row> 
-                        </Container>
-                   </div>
+                </div>
          </div>
         );
         
