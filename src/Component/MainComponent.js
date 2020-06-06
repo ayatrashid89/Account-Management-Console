@@ -1,6 +1,8 @@
 import React,{Component} from 'react';
 import User from './user';
 import {Users} from '../users/userArray';
+import {Link } from 'react-router-dom';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -28,11 +30,14 @@ render(){
   return (
     
     <div>
-       <User users={this.state.Users} modify= {this.modifyState.bind(this)}/>
+        <User users={this.state.Users} modify= {this.modifyState.bind(this)}/>
+        <Link to='/about'>About</Link>
+        <p> </p>
+        <Link to='/contact'>Contact</Link>
      
     </div>
    
-   
+
   );
 }
 }
