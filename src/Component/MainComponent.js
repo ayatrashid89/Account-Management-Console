@@ -1,45 +1,47 @@
-import React,{Component} from 'react';
-import User from './user';
-import {Users} from '../users/userArray';
-import {Link } from 'react-router-dom';
+import React, { Component } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import User from "./user";
+import { Users } from "../utilities/UserArray";
+import About from "./About";
+import Contact from "./Contact";
+import { Switch, Route, Redirect, Link } from "react-router-dom";
 
-import 'bootstrap/dist/css/bootstrap.min.css';
+class Main extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			Users: Users,
+			update: null,
+		};
+		console.log(this.state);
+	}
+
+	modifyState(id) {
+		const update = this.state.Users.filter((user) => id !== user.id);
+		this.setState({
+			Users: update,
+		});
+	}
 
 
-class  Main extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-        Users: Users,
-        update: null
-    };
-    console.log(this.state)
+	addUsers(userData){
+        this.setState({
+			Users: [...this.state.Users, userData]
+		})
 
-}
+	}
 
-   
-  modifyState(id) {
-    const update = this.state.Users.filter(user => id !== user.id)
-     this.setState({
-      Users: update
-
-    })
-    }
-
-render(){
-  return (
-    
-    <div>
-        <User users={this.state.Users} modify= {this.modifyState.bind(this)}/>
-        <Link to='/about'>About</Link>
-        <p> </p>
-        <Link to='/contact'>Contact</Link>
-     
-    </div>
-   
-
-  );
-}
+	render() {
+		return (
+			<div>
+				<Switch>
+					<Route exact path='/' render={() => <User users={this.state.Users} modify={this.modifyState.bind(this)}  add={this.addUsers.bind(this)} />} />
+					<Route exact path='/about' component={About} />
+					<Route exact path='/contact' component={Contact} />
+				</Switch>
+			</div>
+		);
+	}
 }
 
 export default Main;

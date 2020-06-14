@@ -2,7 +2,7 @@ import React from 'react';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import {Link} from  'react-router-dom';
 
-function Home(props) {
+function About(props) {
     return (
         <div className="container">
              <Jumbotron fluid>
@@ -13,4 +13,4 @@ function Home(props) {
     );
 }
 
-export default Home;   
+export default About;   
