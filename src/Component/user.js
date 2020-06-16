@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Button from "react-bootstrap/Button";
 import Jumbotron from "react-bootstrap/Jumbotron";
 import AddUser from "./AddUser";
+import {connect} from 'react-redux';
 import { Link } from "react-router-dom";
 import "../App.css";
 
@@ -24,14 +25,12 @@ class user extends Component {
 					<h1>Hello Users</h1>
 				</Jumbotron>
 				<div className='container'>
-						<div className="row">
-							{userArr}
-						</div>
-						<div className="row">
-							<AddUser add={this.props.add}/>
-						</div> 
-						
-					
+					<div className="row">
+						{userArr}
+					</div>
+					<div className="row">
+						<AddUser/>
+					</div> 
 				</div>
 				<Link to='./contact'>contact</Link>
 				<Link to='./about'>about</Link>
@@ -39,5 +38,9 @@ class user extends Component {
 		);
 	}
 }
+//make redux state available to the props
+const mapStateToProps = (state) => ({
+	Users: state.Users.Users
+})
 
-export default user;
+export default connect(mapStateToProps, null)(user);
