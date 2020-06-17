@@ -10,7 +10,6 @@ import { Switch, Route} from "react-router-dom";
 
 class Main extends Component {
 	
-
    render() {
 		return (
 			<Provider store={store}>
