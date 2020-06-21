@@ -3,5 +3,5 @@ import userReducer from "./userReducer";
 
 
 export default combineReducers({
-    Users: userReducer,
+    rootUsers: userReducer,
   });

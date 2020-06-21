@@ -8,3 +8,11 @@ export function deleteUser(userId) {
         });
     };
 }
+export function addUser(userData) {
+    return function (dispatch) {
+      dispatch({
+        type: ADD_USER,
+        payload: userData,
+      });
+    };
+  } 

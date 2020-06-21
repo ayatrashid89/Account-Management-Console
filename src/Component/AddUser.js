@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
+import {addUser} from '../actions/userActions'
 
 class AddUser extends Component {
     constructor(props){
@@ -18,7 +20,7 @@ class AddUser extends Component {
     }
     handleSubmit(e){
         e.preventDefault();
-        this.props.add({
+        this.props.addUser({
             userName:this.state.userName,
             id:this.state.id,
 
@@ -54,4 +56,4 @@ class AddUser extends Component {
     }
 }
 
-export default AddUser;
+export default connect(null,{addUser}) (AddUser);
