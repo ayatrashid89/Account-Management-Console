@@ -3,19 +3,19 @@ import { ADD_USER, DELETE_USER } from "../actions/actionTypes";
 const initialState = {
 	reducerUsers: [
 		{
-			id: 1,
-			userName: "ayat",
+			id: 130,
+			userName: "Ayat",
 		},
 		{
-			id: 2,
-			userName: "Rashid",
+			id: 120,
+			userName: "Sara",
 		},
 		{
-			id: 3,
+			id: 140,
 			userName: "Mary",
 		},
 		{
-			id: 4,
+			id: 150,
 			userName: "Jon",
 		},
 	],

@@ -36,20 +36,28 @@ class AddUser extends Component {
     render() {
         return (
             <form className="container my-3" onSubmit={this.handleSubmit.bind(this)}>
-                <div className ="form-group">
-                    <label htmlFor="user name">User Name</label>
-                    <input type="text" className="form-control" id="" aria-describedby="user name"
-                     value={this.state.userName} 
-                     name="userName"
-                     onChange={this.handleChange.bind(this)} />
+                <div className="row justify-content-center">
+                    <div className ="form-group">
+                        <div className="col align-self-center">
+                            <label htmlFor="user name">Enter your name:</label>
+                            <input type="text" className="form-control" id="" aria-describedby="user name"
+                            value={this.state.userName} 
+                            name="userName"
+                            onChange={this.handleChange.bind(this)} />
+                        </div>
                     </div>
-                <div className="form-group">
-                    <label htmlFor="id">Id</label>
-                    <input type="text" className="form-control" id="" aria-describedby="id" 
-                    value={this.state.id} 
-                    name="id"
-                    onChange={this.handleChange.bind(this)} />
-                </div>
+               </div>
+               <div className="row justify-content-center">
+                     <div className="form-group">
+                       <div className="col align-self-center">
+                            <label htmlFor="id">Your weight(lbs):</label>
+                            <input type="number" className="form-control" id="" aria-describedby="id" 
+                            value={this.state.id} 
+                            name="id"
+                            onChange={this.handleChange.bind(this)} />
+                       </div>
+                    </div>
+               </div>
                 <button type="submit" className="btn btn-primary">Submit</button>
            </form>
         );
