@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import User from "./user";
-import { Users } from "../utilities/UserArray";
 import About from "./About";
 import Contact from "./Contact";
 import { Provider } from "react-redux";
@@ -12,7 +11,6 @@ class Main extends Component {
 	render() {
 		return (
 			<Provider store={store}>
-				
 				<div>
 					<Switch>
 						<Route exact path='/' render={() => <User />} />

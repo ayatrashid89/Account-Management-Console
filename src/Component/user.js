@@ -3,19 +3,23 @@ import Button from "react-bootstrap/Button";
 import Jumbotron from "react-bootstrap/Jumbotron";
 import AddUser from "./AddUser";
 import { connect } from "react-redux";
-import { deleteUser } from "../actions/userActions";
+import { deleteUser, fetchUsers } from "../actions/userActions";
 import { Link } from "react-router-dom";
 import "../App.css";
 import { Spring } from "react-spring/renderprops";
 
 class user extends Component {
+	componentDidMount() {
+		this.props.fetchUsers();
+	}
+
 	render() {
 		const userArr = this.props.Users.map((user) => (
 			<div className=' card col-lg-5 m-4 ' key={user.id}>
-				<h2>{user.userName}</h2>
+				<h2>{user.first_name}</h2>
 
-				<h3>{user.id / 2}kg </h3>
-				<Button variant='primary' onClick={() => this.props.deleteUser(user.id)}>
+				<h3>{user.email}</h3>
+				<Button variant='primary' onClick={() => this.props.deleteUser(user.email)}>
 					Delete
 				</Button>
 			</div>
@@ -24,11 +28,11 @@ class user extends Component {
 		return (
 			<div>
 				<Jumbotron fluid className='header'>
-					<Spring from={{ opacity: 0 }} to={{ opacity: 3 }} config={{ duration: 1000, delay: 100 }}>
-						{(props) => <h1 style={props}>Convert your weight from lbs to kg</h1>}
-					</Spring>
-					<Spring from={{ number: 0 }} to={{ number: 1 }} config={{ duration: 1000, delay: 1200 }}>
-						{(props) => <h4>{props.number}</h4>}
+					<Spring
+						from={{ opacity: 0, marginTop: 100 }}
+						to={{ opacity: 3, marginTop: 10 }}
+						config={{ duration: 1000, delay: 10 }}>
+						{(props) => <h1 style={props}> Using Redux, RESTful API & React-Spring </h1>}
 					</Spring>
 				</Jumbotron>
 				<div className='container'>
@@ -48,4 +52,4 @@ const mapStateToProps = (state) => ({
 	Users: state.rootUsers.reducerUsers,
 });
 
-export default connect(mapStateToProps, { deleteUser })(user);
+export default connect(mapStateToProps, { deleteUser, fetchUsers })(user);
